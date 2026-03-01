@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d1eavhxim8pnl"]
+
+[ext_resource type="Texture2D" uid="uid://cxsfponfsvgwn" path="res://Art/balloon godot.png" id="1_n2rxu"]
+[ext_resource type="Script" uid="uid://u451cwa2vqv0" path="res://balloon.gd" id="1_r345k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4emby"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r345k"]
+size = Vector2(11, 20)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=689537324]
+script = ExtResource("1_r345k")
+
+[node name="BalloonGodot" type="Sprite2D" parent="." unique_id=438498351]
+texture = ExtResource("1_n2rxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1600434021]
+shape = SubResource("CircleShape2D_4emby")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1716787626]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1643716073]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_r345k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
