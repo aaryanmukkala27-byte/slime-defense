@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://df1mgk4t2po1m"]
+
+[ext_resource type="Script" uid="uid://c2407sswk401s" path="res://slimeboss.gd" id="1_ivt7g"]
+[ext_resource type="Texture2D" uid="uid://cxbgjajbk45nv" path="res://slimeboss.png" id="2_nias0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx7b7"]
+size = Vector2(50, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivt7g"]
+size = Vector2(42, 2)
+
+[node name="SlimeBoss" type="CharacterBody2D" unique_id=554549478]
+script = ExtResource("1_ivt7g")
+
+[node name="Slimeboss" type="Sprite2D" parent="." unique_id=1063729518]
+scale = Vector2(2, 2)
+texture = ExtResource("2_nias0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=943844903]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_vx7b7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=341295893]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=350705402]
+position = Vector2(1, -19)
+shape = SubResource("RectangleShape2D_ivt7g")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

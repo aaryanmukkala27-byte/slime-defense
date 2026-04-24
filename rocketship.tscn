@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bmegphygocbrp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0p6r"]
+
+[sub_resource type="GDScript" id="GDScript_63f7c"]
+script/source = "extends Area2D
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body):
+	if body.has_method(\"activate_rocket\"):
+		body.activate_rocket()
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv11w"]
+size = Vector2(1003.7894, 1017.23834)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mv11w"]
+load_path = "res://.godot/imported/rocketship.png-b9a399c1630e0a5fc81b8153b1327c49.ctex"
+
+[node name="Rocketship" type="Area2D" unique_id=204074035]
+material = SubResource("ShaderMaterial_u0p6r")
+position = Vector2(1332, 729)
+scale = Vector2(0.890625, 0.91015625)
+script = SubResource("GDScript_63f7c")
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=54438553]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1399966889]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1515197898]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=127115835]
+position = Vector2(3.3686523, 8.789673)
+shape = SubResource("RectangleShape2D_mv11w")
+
+[node name="Rocketship" type="Sprite2D" parent="." unique_id=1685191761]
+position = Vector2(-4.491188, 6.592308)
+scale = Vector2(0.8728069, 0.94635206)
+texture = SubResource("CompressedTexture2D_mv11w")
